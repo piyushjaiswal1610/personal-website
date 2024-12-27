@@ -1,38 +1,15 @@
-import Link from 'next/link';
-import { Github, Twitter, Linkedin, Mail } from 'lucide-react';
+import { type ReactNode } from "react";
+import Link from "next/link";
 
-const Footer = () => {
+function Footer(): ReactNode {
   const currentYear = new Date().getFullYear();
-
-  const socialLinks = [
-    { 
-      icon: Github, 
-      href: "https://github.com/yourusername",
-      label: "GitHub"
-    },
-    { 
-      icon: Twitter, 
-      href: "https://twitter.com/yourusername",
-      label: "Twitter"
-    },
-    { 
-      icon: Linkedin, 
-      href: "https://linkedin.com/in/yourusername",
-      label: "LinkedIn"
-    },
-    { 
-      icon: Mail, 
-      href: "mailto:your.email@example.com",
-      label: "Email"
-    }
-  ];
 
   const pageLinks = [
     { label: "Home", href: "/" },
     { label: "Blog", href: "/blog" },
     { label: "Works", href: "/works" },
     { label: "Papers", href: "/papers" },
-    { label: "Contact", href: "/contact" }
+    { label: "Contact", href: "/contact" },
   ];
 
   return (
@@ -43,9 +20,9 @@ const Footer = () => {
           <ul className="flex flex-wrap gap-6 justify-center">
             {pageLinks.map((link) => (
               <li key={link.label}>
-                <Link 
-                  href={link.href}
+                <Link
                   className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+                  href={link.href}
                 >
                   {link.label}
                 </Link>
@@ -55,31 +32,18 @@ const Footer = () => {
         </nav>
 
         {/* Social Links */}
-        <div className="flex justify-center gap-6 mb-8">
-          {socialLinks.map((social) => (
-            <a
-              key={social.label}
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
-              aria-label={social.label}
-            >
-              <social.icon className="w-5 h-5" />
-            </a>
-          ))}
-        </div>
+              <div className="flex justify-center gap-6 mb-8" />
 
         {/* Copyright */}
         <div className="text-center text-sm text-gray-600 dark:text-gray-400">
           <p>© {currentYear} Piyush Jaiswal. All rights reserved.</p>
           <p className="mt-2">
-            Built with Next.js and Tailwind CSS.{' '}
-            <a 
-              href="https://github.com/yourusername/portfolio"
-              target="_blank"
-              rel="noopener noreferrer"
+            Built with Next.js and Tailwind CSS.{" "}
+            <a
               className="hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
+              href="https://github.com/yourusername/portfolio"
+              rel="noopener noreferrer"
+              target="_blank"
             >
               View source
             </a>
@@ -88,6 +52,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;

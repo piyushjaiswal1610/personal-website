@@ -1,7 +1,6 @@
 import React from "react";
-import Header from "../../components/layout/Header";
 
-const PapershelfPage = () => {
+function PaperShelfPage(): React.ReactNode {
   const recentPapers = [
     {
       date: "Sep 15, 2024",
@@ -35,24 +34,22 @@ const PapershelfPage = () => {
   };
 
   return (
-    <React.Fragment>
-      <Header />
       <div className="max-w-4xl mx-auto px-4 py-16">
         <h1 className="text-4xl font-bold italic mb-8">Papershelf</h1>
 
         <p className="text-gray-600 dark:text-gray-300 mb-8">
           I read a few papers every week around various topics that interests me
           and here are some of them that I found amusing categorized by topics.
-          Here's the process I follow to{" "}
-          <a href="#" className="text-blue-600 hover:underline">
+          Here&apos;s the process I follow to{" "}
+          <a className="text-blue-600 hover:underline" href="/">
             read
           </a>
           ,{" "}
-          <a href="#" className="text-blue-600 hover:underline">
+          <a className="text-blue-600 hover:underline" href="/">
             understand
           </a>
           , and{" "}
-          <a href="#" className="text-blue-600 hover:underline">
+          <a className="text-blue-600 hover:underline" href="/">
             remember a paper
           </a>
           .
@@ -61,13 +58,13 @@ const PapershelfPage = () => {
         {/* Recent Papers */}
         <div className="space-y-4 mb-12">
           {recentPapers.map((paper) => (
-            <div key={paper.title} className="flex items-baseline gap-6">
+            <div className="flex items-baseline gap-6" key={paper.title}>
               <span className="text-gray-500 dark:text-gray-400 w-32 flex-shrink-0">
                 {paper.date}
               </span>
               <a
-                href={paper.link}
                 className="text-blue-600 dark:text-blue-400 hover:underline"
+                href={paper.link}
               >
                 {paper.title}
               </a>
@@ -83,20 +80,20 @@ const PapershelfPage = () => {
             this might take some time. So, the papers you see below this
             notification are links and the ones you see above are my notes and
             explanations for each one of them. Slowly, I will be pushing notes
-            for all the papers I've read.
+            for all the papers I&apos;ve read.
           </p>
         </div>
 
         {/* Categorized Papers */}
         {Object.entries(categories).map(([category, papers]) => (
-          <div key={category} className="mb-12">
+          <div className="mb-12" key={category}>
             <h2 className="text-2xl font-bold mb-6">{category}</h2>
             <ul className="space-y-3">
               {papers.map((paper) => (
                 <li key={paper}>
                   <a
-                    href="#"
                     className="text-blue-600 dark:text-blue-400 hover:underline"
+                    href="/"
                   >
                     {paper}
                   </a>
@@ -106,8 +103,7 @@ const PapershelfPage = () => {
           </div>
         ))}
       </div>
-    </React.Fragment>
   );
-};
+}
 
-export default PapershelfPage
+export default PaperShelfPage;

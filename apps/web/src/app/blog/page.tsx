@@ -1,8 +1,7 @@
 import Link from "next/link";
 import React from "react";
-import Header from "../../components/layout/Header";
 
-const BlogPage = () => {
+function BlogPage(): React.ReactNode {
   const blogs = [
     {
       date: "Dec 20, 2024",
@@ -37,8 +36,6 @@ const BlogPage = () => {
   ];
 
   return (
-    <React.Fragment>
-      <Header />
       <div className="max-w-4xl mx-auto px-4 py-16 my-4">
         <h1 className="text-4xl font-bold mb-8">Blogs</h1>
 
@@ -49,13 +46,13 @@ const BlogPage = () => {
 
         <div className="space-y-4">
           {blogs.map((blog) => (
-            <div key={blog.slug} className="flex items-baseline gap-6">
+            <div className="flex items-baseline gap-6" key={blog.slug}>
               <span className="text-gray-500 dark:text-gray-400 w-32 flex-shrink-0">
                 {blog.date}
               </span>
               <Link
-                href={`/blog/${blog.slug}`}
                 className="text-blue-600 dark:text-blue-400 hover:underline"
+                href={`/blog/${blog.slug}`}
               >
                 {blog.title}
               </Link>
@@ -63,8 +60,7 @@ const BlogPage = () => {
           ))}
         </div>
       </div>
-    </React.Fragment>
   );
-};
+}
 
 export default BlogPage;
