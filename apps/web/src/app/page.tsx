@@ -1,8 +1,15 @@
+import React from "react";
+import Hero from "../components/home/hero.tsx";
+import RecentWork from "../components/home/recent-work.tsx";
 
-export default function Page(): JSX.Element {
+export default function Home(): React.ReactNode {
   return (
-    <main className="flex flex-col items-center justify-between min-h-screen p-24">
-     <h1 className="bg-red-500">Hi there</h1>
-    </main>
+    <>
+      <h1 className="text-red-500">Hi there!</h1>
+      <div>
+        <Hero />
+        <RecentWork />
+      </div>
+    </>
   );
 }
