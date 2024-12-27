@@ -1,6 +1,6 @@
 import React from 'react';
 import { Inter } from 'next/font/google';
-import Footer from '../components/layout/footer';
+import Footer from '../components/layout/footer.tsx';
 import { ThemeProvider } from './theme-provider';
 import './globals.css';
 
