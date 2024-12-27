@@ -1,8 +1,18 @@
+import Header from "../components/layout/Header";
+import Hero from "../components/home/Hero";
+import RecentWork from "../components/home/RecentWork";
 
-export default function Page(): JSX.Element {
+export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-between min-h-screen p-24">
-     <h1 className="bg-red-500">Hi there</h1>
-    </main>
+    <>
+      <h1 className="text-red-500">
+        Hi there!
+      </h1>
+      <Header />
+      <main>
+        <Hero />
+        <RecentWork />
+      </main>
+    </>
   );
 }
