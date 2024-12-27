@@ -1,92 +1,71 @@
 "use client";
 import { type ReactNode, useState } from "react";
-import Link from "next/link";
+import { NavLink, TextLogo } from "../ui";
+import { RxCross2 } from "react-icons/rx";
+import ThemeButton from "../theme-button";
 import { useTheme } from "../../app/theme-provider";
-import TurborepoSvg from '../../../public/turborepo.svg';
 
 function Header(): ReactNode {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMenu = ():void => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   return (
-    <div className="fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-50 border-b border-gray-100 dark:border-gray-800">
-      <nav className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-        <Link
-          className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"
-          href="/"
-        >
-          Piyush Jaiswal
-        </Link>
+    <div
+      className={`flex justify-between items-center px-6 py-3 border-b-[0.5px] border-b-gray-400 mx-auto sticky top-0 bg-opacity-80 w-[95%] ${theme === "dark" ? "bg-gray-900 text-orange-50 " : "bg-white text-black"}`}
+    >
+      <div className="md:w-[30%]">
+        <TextLogo />
+      </div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-8">
-          {["Work", "Blog", "Papers", "Contact"].map((item) => (
-            <Link
-              className="relative group"
-              href={`/${item.toLowerCase()}`}
-              key={item}
-            >
-              {item}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-purple-600 transition-all group-hover:w-full" />
-            </Link>
-          ))}
-        </div>
+      {/* Navigation Links for Desktop */}
+      <div className="hidden md:flex justify-around items-center w-[30%]">
+        <NavLink href="/projects" label="Projects" />
+        <NavLink href="/articles" label="Articles" />
+        <NavLink href="/notes" label="Notes" />
+      </div>
 
-        <div className="flex items-center gap-6">
-          <button
-            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
-                      onClick={toggleTheme}
-                      type="button"
-          >
-            {theme === "light" ? (
-              <TurborepoSvg className="w-5 h-5" />
-            ) : (
-              <TurborepoSvg className="w-5 h-5" />
-            )}
-          </button>
+      <div className="w-[30%] text-right hidden md:block">
+        <ThemeButton />
+      </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2"
-            onClick={() => {
-              setIsMenuOpen(!isMenuOpen);
-            }}
-                      type="button"
-          >
-            <div className="space-y-1.5">
-              <span
-                className={`block w-6 h-0.5 bg-gray-600 transition-transform ${isMenuOpen ? "rotate-45 translate-y-2" : ""}`}
-              />
-              <span
-                className={`block w-6 h-0.5 bg-gray-600 transition-opacity ${isMenuOpen ? "opacity-0" : ""}`}
-              />
-              <span
-                className={`block w-6 h-0.5 bg-gray-600 transition-transform ${isMenuOpen ? "-rotate-45 -translate-y-2" : ""}`}
-              />
-            </div>
-          </button>
-        </div>
-      </nav>
+      {/* Mobile Menu Toggle Button */}
+      <div className="md:hidden w-[30%] text-right">
+        <button className="text-2xl" onClick={toggleMenu} type="button">
+          {isMobileMenuOpen ? "✖" : "☰"}
+        </button>
+      </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Navigation Menu */}
       <div
-        className={`md:hidden absolute w-full bg-white border-b transform ${isMenuOpen ? "translate-y-0" : "-translate-y-full"} transition-transform duration-300 ease-in-out`}
+        className={`md:hidden min-h-screen p-4 fixed top-0 right-0 w-2/3 flex flex-col justify-start items-start bg-gray-900 text-orange-50 z-50 transform ${
+          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        } transition-transform duration-300 ease-in-out p-4`}
       >
-        <div className="px-4 py-3 space-y-3">
-          {["Work", "Blog", "Papers", "Contact"].map((item) => (
-            <Link
-              className="block py-2 hover:text-purple-600"
-              href={`/${item.toLowerCase()}`}
-              key={item}
-              onClick={() => {
-                setIsMenuOpen(false);
-              }}
-            >
-              {item}
-            </Link>
-          ))}
+        <div className="flex justify-between items-center mb-4">
+          <button className="text-2xl" onClick={toggleMenu} type="button">
+          <RxCross2 />
+          </button>
+        </div>
+        <div className="flex flex-col space-y-4">
+          <NavLink href="/projects" label="Projects" />
+          <NavLink href="/articles" label="Articles" />
+          <NavLink href="/notes" label="Notes" />
+        </div>
+        <div className="mt-4">
+          <ThemeButton />
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      <div
+        className={`md:hidden fixed inset-0 bg-black opacity-50 z-40 ${
+          isMobileMenuOpen ? "block" : "hidden"
+        }`}
+      />
     </div>
   );
 }
