@@ -1,13 +1,13 @@
 "use client";
 import React from "react";
-import SocialLinks from "./social-links";
 import { useTheme } from "../app/theme-provider";
+import SocialLinks from "./social-links";
 
 function Hero(): React.ReactNode {
   const { theme } = useTheme();
 
   return (
-    <section className="min-h-screen pt-12 pb-16 px-4">
+    <section className={`min-h-screen pt-12 pb-2 mb-12 px-4 bg-gradient-to-br  ${theme === "dark" ? "from-blue-950 to-slate-900" : "from-orange-50 to-sky-100"}`}>
       <div className="max-w-[95%] mx-auto grid md:grid-cols-2 gap-10 items-start">
         <div>
           <h1 className="text-4xl font-medium italic font-serif mb-3">
@@ -16,7 +16,7 @@ function Hero(): React.ReactNode {
           <h3 className="text-xl font-medium font-serif text-sky-500 mb-3">
             engineer, innovator, and tinkerer
           </h3>
-          <div className="text-sm text-gray-600 mb-8 leading-tight">
+          <div className="text-sm text-gray-500 mb-8 leading-tight">
             <p>
               I&apos;m a software developer with a passion for building
               efficient and scalable web and mobile applications. My journey
@@ -61,8 +61,10 @@ function Hero(): React.ReactNode {
 
         <div className=" flex justify-center items-center w-full h-full md:mt-8">
           <div
-            className={`aspect-square w-[90%] rounded-2xl bg-gradient-to-br p-8 ${theme === "dark" ? "from-blue-900 to-slate-900" : "from-blue-100 to-transparent"}`}
-          ></div>
+            className={`aspect-square w-[90%] rounded-2xl bg-gradient-to-br ${theme === "dark" ? "" : ""}`}
+          >
+            {" "}
+          </div>
         </div>
       </div>
     </section>
