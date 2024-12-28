@@ -59,7 +59,7 @@ function Hero(): React.ReactNode {
           <SocialLinks />
         </div>
 
-        <div className="relative flex justify-center items-center w-full h-full mt-8">
+        <div className=" flex justify-center items-center w-full h-full md:mt-8">
           <div
             className={`aspect-square w-[90%] rounded-2xl bg-gradient-to-br p-8 ${theme === "dark" ? "from-blue-900 to-slate-900" : "from-blue-100 to-transparent"}`}
           ></div>
