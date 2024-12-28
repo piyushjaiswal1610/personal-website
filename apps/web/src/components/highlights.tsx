@@ -74,7 +74,7 @@ function RecentArticleCard({
 }: RecentArticleCardProps): ReactNode {
   return (
     <li className="my-1">
-      {date + " " + ": "}
+      {date + " : "}
       <Link className=" text-sky-400" href={link}>
         {title}
       </Link>

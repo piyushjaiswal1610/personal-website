@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import SocialLinks from "./social-links";
 import { useTheme } from "../app/theme-provider";
+import SocialLinks from "./social-links";
 
 function Hero(): React.ReactNode {
   const { theme } = useTheme();
