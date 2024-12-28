@@ -14,34 +14,16 @@ function Footer(): ReactNode {
 
   return (
     <footer className="border-t border-gray-200 dark:border-gray-800 mt-auto">
-      <div className="max-w-6xl mx-auto px-4 py-12">
-        {/* Navigation Links */}
-        <nav className="mb-8">
-          <ul className="flex flex-wrap gap-6 justify-center">
-            {pageLinks.map((link) => (
-              <li key={link.label}>
-                <Link
-                  className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
-                  href={link.href}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* Social Links */}
-              <div className="flex justify-center gap-6 mb-8" />
+      <div className="max-w-6xl mx-auto px-4 py-5">
 
         {/* Copyright */}
         <div className="text-center text-sm text-gray-600 dark:text-gray-400">
           <p>© {currentYear} Piyush Jaiswal. All rights reserved.</p>
           <p className="mt-2">
-            Built with Next.js and Tailwind CSS.{" "}
+            Built with Turborepo, Next.js and Tailwind CSS.{" "}
             <a
-              className="hover:text-gray-900 dark:hover:text-gray-100 transition-colors"
-              href="https://github.com/yourusername/portfolio"
+              className="hover:text-gray-900 dark:hover:text-gray-100 transition-colors text-sky-500"
+              href="https://github.com/piyushjaiswal1610/personal-website"
               rel="noopener noreferrer"
               target="_blank"
             >
