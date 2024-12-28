@@ -1,7 +1,11 @@
+"use client";
 import Link from "next/link";
 import React from "react";
+import { useTheme } from "../theme-provider";
 
 function BlogPage(): React.ReactNode {
+  const { theme } = useTheme();
+
   const blogs = [
     {
       date: "Dec 20, 2024",
@@ -36,30 +40,32 @@ function BlogPage(): React.ReactNode {
   ];
 
   return (
-      <div className="max-w-4xl mx-auto px-4 py-16 my-4">
-        <h1 className="text-4xl font-bold mb-8">Blogs</h1>
+    <div className="min-h-screen max-w-4xl mx-auto px-4 py-16 my-4">
+      <h1 className="text-4xl font-bold mb-8">Articles</h1>
 
-        <p className="text-gray-600 dark:text-gray-300 mb-12 text-lg">
-          I write about web development, software engineering, and my journey in
-          tech. Here are all my articles to date.
-        </p>
+      <p
+        className={` mb-12 text-lg ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}
+      >
+        I write about software engineering, and my journey in tech. Here are all
+        my articles to date.
+      </p>
 
-        <div className="space-y-4">
-          {blogs.map((blog) => (
-            <div className="flex items-baseline gap-6" key={blog.slug}>
-              <span className="text-gray-500 dark:text-gray-400 w-32 flex-shrink-0">
-                {blog.date}
-              </span>
-              <Link
-                className="text-blue-600 dark:text-blue-400 hover:underline"
-                href={`/blog/${blog.slug}`}
-              >
-                {blog.title}
-              </Link>
-            </div>
-          ))}
-        </div>
+      <div className="space-y-4">
+        {blogs.map((blog) => (
+          <div className="flex items-baseline gap-6" key={blog.slug}>
+            <span className="text-gray-500 dark:text-gray-400 w-32 flex-shrink-0">
+              {blog.date}
+            </span>
+            <Link
+              className="text-blue-600 dark:text-blue-400 hover:underline"
+              href={`/blog/${blog.slug}`}
+            >
+              {blog.title}
+            </Link>
+          </div>
+        ))}
       </div>
+    </div>
   );
 }
 
