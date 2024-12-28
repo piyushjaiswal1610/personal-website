@@ -7,7 +7,7 @@ function Hero(): React.ReactNode {
   const { theme } = useTheme();
 
   return (
-    <section className="min-h-screen pt-12 pb-16 px-4">
+    <section className="min-h-scree pt-12 pb-2 mb-12 px-4">
       <div className="max-w-[95%] mx-auto grid md:grid-cols-2 gap-10 items-start">
         <div>
           <h1 className="text-4xl font-medium italic font-serif mb-3">
