@@ -1,16 +1,7 @@
 import { type ReactNode } from "react";
-import Link from "next/link";
 
 function Footer(): ReactNode {
   const currentYear = new Date().getFullYear();
-
-  const pageLinks = [
-    { label: "Home", href: "/" },
-    { label: "Blog", href: "/blog" },
-    { label: "Works", href: "/works" },
-    { label: "Papers", href: "/papers" },
-    { label: "Contact", href: "/contact" },
-  ];
 
   return (
     <footer className="border-t border-gray-200 dark:border-gray-800 mt-auto">
