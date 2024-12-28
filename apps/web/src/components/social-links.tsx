@@ -18,7 +18,7 @@ function SocialLinks(): ReactNode {
       label: "LinkedIn",
     },
     {
-      href: "https://twitter.com/yourusername",
+      href: "https://x.com/pi_jaiswal",
       icon: <FaXTwitter />,
       label: "X (Twitter)",
     },

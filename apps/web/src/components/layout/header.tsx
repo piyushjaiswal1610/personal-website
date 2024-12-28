@@ -1,6 +1,6 @@
 "use client";
 import { type ReactNode, useState } from "react";
-import { NavLink, TextLogo } from "../ui";
+import { TextLogo } from "../ui";
 import { RxCross2 } from "react-icons/rx";
 import ThemeButton from "../theme-button";
 import { useTheme } from "../../app/theme-provider";
@@ -15,7 +15,7 @@ function Header(): ReactNode {
 
   return (
     <div
-      className={`flex justify-between items-center px-6 py-3 border-b-[0.5px] border-b-gray-400 mx-auto sticky top-0 bg-opacity-80 w-[95%] ${theme === "dark" ? "bg-gray-900 text-orange-50 " : "bg-white text-black"}`}
+      className={`flex justify-between items-center px-6 py-3 border-b-[0.5px] border-b-gray-400 mx-auto sticky top-0 bg-opacity-80 w-[98%] ${theme === "dark" ? "bg-gray-900 text-orange-50 " : "bg-white text-black"}`}
     >
       <div className="md:w-[30%]">
         <TextLogo />
@@ -23,9 +23,9 @@ function Header(): ReactNode {
 
       {/* Navigation Links for Desktop */}
       <div className="hidden md:flex justify-around items-center w-[30%]">
-        <NavLink href="/projects" label="Projects" />
+        {/* <NavLink href="/projects" label="Projects" />
         <NavLink href="/articles" label="Articles" />
-        <NavLink href="/notes" label="Notes" />
+        <NavLink href="/notes" label="Notes" /> */}
       </div>
 
       <div className="w-[30%] text-right hidden md:block">
@@ -51,9 +51,9 @@ function Header(): ReactNode {
           </button>
         </div>
         <div className="flex flex-col space-y-4">
-          <NavLink href="/projects" label="Projects" />
+          {/* <NavLink href="/projects" label="Projects" />
           <NavLink href="/articles" label="Articles" />
-          <NavLink href="/notes" label="Notes" />
+          <NavLink href="/notes" label="Notes" /> */}
         </div>
         <div className="mt-4">
           <ThemeButton />
