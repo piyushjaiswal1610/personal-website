@@ -3,12 +3,23 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { generateCharacterArray } from "../helper/utils";
 
+export enum TypingSpeed {
+  slow = 100,
+  med = 50,
+  fast = 20,
+}
+
 interface TypewriterProps {
   txt: string;
+  speed: TypingSpeed;
   onComplete?: () => void;
 }
 
-export default function Typewriter({ txt, onComplete }: TypewriterProps) {
+export default function Typewriter({
+  txt,
+  speed,
+  onComplete,
+}: TypewriterProps) {
   const [text, setText] = useState<string>("");
   const characters: string[] = useMemo(
     () => generateCharacterArray(txt),
@@ -30,7 +41,7 @@ export default function Typewriter({ txt, onComplete }: TypewriterProps) {
       const currentChar = characters[i] ?? "";
       setText((prev) => prev + currentChar);
       i++;
-    }, 100);
+    }, speed);
 
     return () => clearInterval(interval);
   }, [characters]);
