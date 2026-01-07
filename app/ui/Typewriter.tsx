@@ -5,11 +5,15 @@ import { generateCharacterArray } from "../helper/utils";
 
 interface TypewriterProps {
   txt: string;
+  onComplete?: () => void;
 }
 
-export default function Typewriter({ txt }: TypewriterProps) {
+export default function Typewriter({ txt, onComplete }: TypewriterProps) {
   const [text, setText] = useState<string>("");
-  const characters: string[] = useMemo(() => generateCharacterArray(txt), [txt]);
+  const characters: string[] = useMemo(
+    () => generateCharacterArray(txt),
+    [txt]
+  );
 
   useEffect(() => {
     let i = 0;
@@ -17,6 +21,7 @@ export default function Typewriter({ txt }: TypewriterProps) {
 
     const interval = setInterval(() => {
       if (i >= characters.length) {
+        if (onComplete) onComplete();
         clearInterval(interval);
         return;
       }

@@ -1,17 +1,30 @@
+"use client";
+
+import { useState } from "react";
 import { Typewriter } from "../ui";
 
 export default function Hero() {
+  const [showH3, setShowH3] = useState(false);
+  const [showP, setShowP] = useState(false);
+
   return (
     <div className="flex flex-col items-center justify-center absolute h-full w-full">
       <h1 className="text-4xl font-bold">
-        <Typewriter txt="I'm Piyush" />
+        <Typewriter txt="I'm Piyush" onComplete={() => setShowH3(true)} />
       </h1>
-      <h3 className="text-2xl font-medium my-2">
-        <Typewriter txt="I work on backend systems." />
-      </h3>
-      <p className="text-md text-gray-500 italic">
-        <Typewriter txt="APIs, services, and learning my way into DevOps and infrastructure." />
-      </p>
+      {showH3 && (
+        <h3 className="text-2xl font-medium my-2">
+          <Typewriter
+            txt="I work on backend systems."
+            onComplete={() => setShowP(true)}
+          />
+        </h3>
+      )}
+      {showP && (
+        <p className="text-md text-gray-500 italic">
+          <Typewriter txt="APIs, services, and learning my way into DevOps and infrastructure." />
+        </p>
+      )}
     </div>
   );
 }
